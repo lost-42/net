@@ -1,0 +1,42 @@
+.my-slot-1 {
+  .my-node {
+    .my-node-main {
+      height: 110px;
+      width: 110px;
+      cursor: pointer;
+      display: flex;
+      justify-content: center;
+      place-items: center;
+    }
+
+    .my-node-text {
+      color: forestgreen;
+      font-size: 16px;
+      position: absolute;
+      width: 160px;
+      height: 25px;
+      line-height: 25px;
+      top: 100%;
+      left: calc((100% - 160px) / 2);
+      text-align: center;
+      background-color: rgba(66, 187, 66, 0.2);
+      border-radius: 5px;
+    }
+
+    .c-person-pic {
+      height: 120px;
+      width: 120px;
+      object-fit: cover;
+      border-radius: 50%;
+    }
+  }
+
+  .relation-graph .rel-node-checked {
+    transition: background-color 0.2s ease, outline 0.2s ease, color 0.2s ease, -webkit-box-shadow 0.2s ease;
+    box-shadow: 0 0 0 8px rgba(66, 187, 66, 0.2);
+  }
+
+  .relation-graph .c-rg-line-checked-bg {
+    stroke: rgba(66, 187, 66, 0.2);
+  }
+}
