@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./App.scss";
 import RelationGraph from "./slot";
 import cityData from "./city/data";
+import danmachiData from "./danmachi/data";
 
 // 作品数据接口
 interface WorkData {
@@ -18,6 +19,12 @@ const works: WorkData[] = [
         name: "小城日常",
         link: "https://bgm.tv/subject/514358",
         data: cityData,
+    },
+    {
+        id: "danmachi",
+        name: "在地下城寻求邂逅是否搞错了什么",
+        link: "https://bgm.tv/subject/116287",
+        data: danmachiData,
     },
 ];
 
