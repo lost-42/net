@@ -1,11 +1,11 @@
 // 导入图片资源，让Vite正确处理图片路径
-import img1 from "./imgs/贝尔·克朗尼.png";
-import img2 from "./imgs/赫斯缇雅.png";
-import img3 from "./imgs/艾丝·华伦斯坦.png";
-import img4 from "./imgs/莉莉露卡·厄德.png";
-import img5 from "./imgs/琉·利昂.png";
-import img6 from "./imgs/倭·命.png";
-import img7 from "./imgs/韦尔夫·克洛.png";
+import img1 from "./imgs/贝尔·克朗尼.webp";
+import img2 from "./imgs/赫斯缇雅.webp";
+import img3 from "./imgs/艾丝·华伦斯坦.webp";
+import img4 from "./imgs/莉莉露卡·厄德.webp";
+import img5 from "./imgs/琉·利昂.webp";
+import img6 from "./imgs/倭·命.webp";
+import img7 from "./imgs/韦尔夫·克洛.webp";
 
 export default {
     nodes: [
