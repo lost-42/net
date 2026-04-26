@@ -1,8 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
+import { useParams, useHistory } from "react-router-dom";
 import "./App.scss";
 import RelationGraph from "./slot";
 import cityData from "./city/data";
 import danmachiData from "./danmachi/data";
+import bakatestData from "./bakatest/data";
 
 // 作品数据接口
 interface WorkData {
@@ -26,11 +28,22 @@ const works: WorkData[] = [
         link: "https://bgm.tv/subject/116287",
         data: danmachiData,
     },
+    {
+        id: "bakatest",
+        name: "笨蛋，测验，召唤兽",
+        link: "https://bgm.tv/subject/3326",
+        data: bakatestData,
+    },
 ];
 
 const App: React.FC = () => {
-    const [selectedWork, setSelectedWork] = useState<string>("city");
-    const [currentWorkData, setCurrentWorkData] = useState<any>(cityData);
+    const { workId } = useParams<{ workId: string }>();
+    const history = useHistory();
+    const [selectedWork, setSelectedWork] = useState<string>(workId || "city");
+    const [currentWorkData, setCurrentWorkData] = useState<any>(() => {
+        const work = works.find((w) => w.id === (workId || "city"));
+        return work ? work.data : null;
+    });
 
     // 处理作品选择
     const handleWorkSelect = (workId: string) => {
@@ -39,6 +52,8 @@ const App: React.FC = () => {
         if (work) {
             setCurrentWorkData(work.data || null);
         }
+        // 同步更新 URL hash
+        history.push(`/works/${workId}`);
     };
 
     // 处理logo点击，回到第一个作品
@@ -48,12 +63,14 @@ const App: React.FC = () => {
         }
     };
 
-    // 初始化：默认选中第一个作品
+    // 当路由参数 workId 变化时（如浏览器前进/后退），同步状态
     useEffect(() => {
-        if (works.length > 0 && !selectedWork) {
-            handleWorkSelect(works[0].id);
+        const work = works.find((w) => w.id === workId);
+        if (work) {
+            setSelectedWork(workId);
+            setCurrentWorkData(work.data || null);
         }
-    }, []);
+    }, [workId]);
 
     return (
         <div className="app-container">
